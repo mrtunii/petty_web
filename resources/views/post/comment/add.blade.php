@@ -32,7 +32,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <span class="roboto">აირჩიეთ სურათი (თუ გადაუღეთ)</span>
-                                                <input type="file"  name="image" class="form-control " accept="image/*" capture="camera" multiple>
+                                                <input type="file"  name="image" class="form-control " accept="image/*"  multiple>
                                             </div>
                                             <div class="form-group">
                                                 <span class="roboto">დამატებითი ინფორმაცია</span>
