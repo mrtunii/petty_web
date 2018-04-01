@@ -302,8 +302,8 @@
         var myLatlng = new google.maps.LatLng({{ $post->lat }},{{ $post->long }});
 var mapOptions = {
   zoom: 12,
-  center: myLatlng,
-  scrollwheel: false
+  center: myLatlng
+  
 }
 var map = new google.maps.Map(document.getElementById("tg-locationmap"), mapOptions);
 var defaultMarker = new google.maps.Marker({
