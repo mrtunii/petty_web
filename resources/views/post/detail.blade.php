@@ -213,7 +213,7 @@
                                         <hr>
                                         <div style="margin-top:30px;">
                                             <div class="text-center">
-                                                <h3 class="roboto">გამოხმაურებები</h3>
+                                                <h3 class="roboto">გამოხმაურებები({{ $post->comments->count() }})</h3>
                                             </div>
                                             @if($post->comments->count() > 0)
                                             <ul class="media-list">
