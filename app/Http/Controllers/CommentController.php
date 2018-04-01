@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function getPositions($post_id) {
-        $comment = Comment::where('post_id',$post_id)->orderBy('date_seen','asc')->get();
+        $comment = Comment::where('post_id',$post_id)->orderBy('seen_date','asc')->get();
         return response()->json($comment);
     }
 
