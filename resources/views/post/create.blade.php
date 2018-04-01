@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <span class="roboto">აირჩიეთ სურათები</span>
-                                                <input type="file"  name="images[]" class="form-control " accept="image/*"  multiple>
+                                                <input type="file"  name="images[]" class="form-control "   multiple>
                                             </div>
                                             <div class="form-group">
                                                 <span class="roboto">დამატებითი ინფორმაცია</span>

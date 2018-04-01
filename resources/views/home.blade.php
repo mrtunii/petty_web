@@ -29,7 +29,11 @@
                             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                                 <div class="tg-ad ">
                                     <figure>
+                                        @if($post->images->count() > 0)
                                         <a href="javascript:void(0);"><img src="/uploads/{{ $post->images->first()->path }}" alt="image description"></a>
+                                        @else
+                                        <a href="javascript:void(0);"><img src=" https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="image description"></a>
+                                       @endif
                                     </figure>
                                     <div class="tg-adcontent">
                                         
