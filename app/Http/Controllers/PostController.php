@@ -46,7 +46,7 @@ class PostController extends Controller
     }
 
     public function detail($id) {
-        $post = Post::with('user')->with('images')->findOrFail($id);
+        $post = Post::with('user')->with('images')->with('comments')->findOrFail($id);
         return view('post.detail')->with('post',$post);
     }
 }

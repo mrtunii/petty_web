@@ -17,7 +17,7 @@
     width: 100%;
 }
 
-.media .media-object { max-width: 120px; }
+.media .media-object { max-width: 60px; }
 .media-body { position: relative; }
 .media-date { 
     position: absolute; 
@@ -171,8 +171,15 @@
                     </div>
                 </div>
             </div>
-            <!--/Slider-->
+           
         </div>
+         <div style="margin-top:50px;" class="text-center">
+            <!--/Slider-->
+            <a class="tg-btn" href="/comment/add/{{ $post->id }}">
+                                <i class="icon-bookmark"></i>
+                                <span class="roboto">კომენტარის დამატება</span>
+                            </a>
+                        </div>
                                     </div>
                                 </div>
                                
@@ -181,31 +188,19 @@
                         </div>
                         <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
                             <div id="tg-content" class="tg-content">
-                                <div class="tg-ad tg-verifiedad tg-detail tg-addetail">
+                                <div class="tg-ad tg-detail tg-addetail">
                                     <div class="tg-adcontent">
                                       
                                         <div class="tg-adtitle">
                                             <h2>{{ $post->title }}</h2>
-                                        </div>
-                                        <ul class="tg-admetadata">
-                                            <li>By: <a href="javascript:void(0);">Lurlene Cashman</a></li>
-                                            <li>Ad Id: <a href="javascript:void(0);">248GCa57</a></li>
-                                            <li><i class="icon-earth"></i><address>earth Manchester, UK</address></li>
-                                            <li><i class="icon-eye"></i><span>15642</span></li>
-                                        </ul>
-                                        <div class="tg-share">
-                                            <strong>share:</strong>
-                                            <ul class="tg-socialicons">
-                                                <li class="tg-facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-                                                <li class="tg-twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-                                                <li class="tg-linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-                                                <li class="tg-googleplus"><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-                                                <li class="tg-rss"><a href="javascript:void(0);"><i class="fa fa-rss"></i></a></li>
-                                            </ul>
                                             <div class="tg-adadded">
                                                 <i class="icon-smartphone"></i>
-                                                <span>Added via phone on Jun 27, 2017</span>
+                                                <span class="roboto">დამატების თარიღი: {{ $post->created_at }}</span>
                                             </div>
+                                        </div>
+                                       
+                                        <div class="tg-share">
+                                            
                                         </div>
                                     </div>
                                     <div id="tg-locationmap" class="tg-locationmap"></div>
@@ -221,135 +216,38 @@
                                             <div class="text-center">
                                                 <h3 class="roboto">გამოხმაურებები</h3>
                                             </div>
+                                            @if($post->comments->count() > 0)
                                             <ul class="media-list">
+                    @foreach($post->comments()->orderBy('seen_date','desc')->get() as $comment)
                       <li class="media">
                         <a class="pull-left" href="#">
-                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+                          <img class="media-object img-circle" src="http://www.gravatar.com/avatar/{{ md5($comment->user->email) }}?size=70" alt="profile">
                         </a>
                         <div class="media-body">
                           <div class="well well-lg">
-                              <h4 class="media-heading text-uppercase reviews">Marco </h4>
-                              <ul class="media-date text-uppercase reviews list-inline">
-                                <li class="dd">22</li>
-                                <li class="mm">09</li>
-                                <li class="aaaa">2014</li>
-                              </ul>
+                              <h4 class="media-heading text-uppercase reviews roboto">{{ $comment->user->firstname.' '.$comment->user->lastname }} :
+                                {{ $comment->seen_date }}
+                              </h4>
+                              <address class="roboto" style="font-size:12px;">{{ $post->lost_address }}</address>
+                              
                               <p class="media-comment">
-                                Great snippet! Thanks for sharing.
+                                {{ $comment->description }}
                               </p>
-                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span> 2 comments</a>
-                          </div>              
-                        </div>
-                        <div class="collapse" id="replyOne">
-                            <ul class="media-list">
-                                <li class="media media-replied">
-                                    <a class="pull-left" href="#">
-                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg" alt="profile">
-                                    </a>
-                                    <div class="media-body">
-                                      <div class="well well-lg">
-                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> The Hipster</h4>
-                                          <ul class="media-date text-uppercase reviews list-inline">
-                                            <li class="dd">22</li>
-                                            <li class="mm">09</li>
-                                            <li class="aaaa">2014</li>
-                                          </ul>
-                                          <p class="media-comment">
-                                            Nice job Maria.
-                                          </p>
-                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                                      </div>              
-                                    </div>
-                                </li>
-                                <li class="media media-replied" id="replied">
-                                    <a class="pull-left" href="#">
-                                      <img class="media-object img-circle" src="https://pbs.twimg.com/profile_images/442656111636668417/Q_9oP8iZ.jpeg" alt="profile">
-                                    </a>
-                                    <div class="media-body">
-                                      <div class="well well-lg">
-                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Mary</h4></h4>
-                                          <ul class="media-date text-uppercase reviews list-inline">
-                                            <li class="dd">22</li>
-                                            <li class="mm">09</li>
-                                            <li class="aaaa">2014</li>
-                                          </ul>
-                                          <p class="media-comment">
-                                            Thank you Guys!
-                                          </p>
-                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                                      </div>              
-                                    </div>
-                                </li>
-                            </ul>  
-                        </div>
-                      </li>          
-                      <li class="media">
-                        <a class="pull-left" href="#">
-                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
-                        </a>
-                        <div class="media-body">
-                          <div class="well well-lg">
-                              <h4 class="media-heading text-uppercase reviews">Nico</h4>
-                              <ul class="media-date text-uppercase reviews list-inline">
-                                <li class="dd">22</li>
-                                <li class="mm">09</li>
-                                <li class="aaaa">2014</li>
-                              </ul>
-                              <p class="media-comment">
-                                I'm looking for that. Thanks!
-                              </p>
+                              @if($comment->image_path != null)
                               <div class="embed-responsive embed-responsive-16by9">
-                                  <iframe class="embed-responsive-item" src="//www.youtube.com/embed/80lNjkcp6gI" allowfullscreen></iframe>
+                                  <a href="/uploads/{{ $comment->image_path }}" target="_blank">
+                                      <img src="/uploads/{{ $comment->image_path }}" style="width: 300px; height: 300px;">
+                                  </a>
                               </div>
-                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
+                              @endif
+                             
                           </div>              
                         </div>
                       </li>
-                      <li class="media">
-                        <a class="pull-left" href="#">
-                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
-                        </a>
-                        <div class="media-body">
-                          <div class="well well-lg">
-                              <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
-                              <ul class="media-date text-uppercase reviews list-inline">
-                                <li class="dd">22</li>
-                                <li class="mm">09</li>
-                                <li class="aaaa">2014</li>
-                              </ul>
-                              <p class="media-comment">
-                                Yehhhh... Thanks for sharing.
-                              </p>
-                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
-                          </div>              
-                        </div>
-                        <div class="collapse" id="replyTwo">
-                            <ul class="media-list">
-                                <li class="media media-replied">
-                                    <a class="pull-left" href="#">
-                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jackiesaik/128.jpg" alt="profile">
-                                    </a>
-                                    <div class="media-body">
-                                      <div class="well well-lg">
-                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Lizz</h4>
-                                          <ul class="media-date text-uppercase reviews list-inline">
-                                            <li class="dd">22</li>
-                                            <li class="mm">09</li>
-                                            <li class="aaaa">2014</li>
-                                          </ul>
-                                          <p class="media-comment">
-                                            Classy!
-                                          </p>
-                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                                      </div>              
-                                    </div>
-                                </li>
-                            </ul>  
-                        </div>
-                      </li>
-                    </ul> 
+                      @endforeach
+                     
+                    </ul>
+                     @endif
                                         </div>
                                     </div>
                                 </div>
@@ -376,7 +274,7 @@
 
 <script type="text/javascript">
       jQuery(document).ready(function($) {
- 
+    
         $('#myCarousel').carousel({
                 interval: 5000
         });
@@ -397,6 +295,37 @@
                  var id = $('.item.active').data('slide-number');
                 $('#carousel-text').html($('#slide-content-'+id).html());
         });
+
+        var myLatlng = new google.maps.LatLng({{ $post->lat }},{{ $post->long }});
+var mapOptions = {
+  zoom: 12,
+  center: myLatlng
+}
+var map = new google.maps.Map(document.getElementById("tg-locationmap"), mapOptions);
+var defaultMarker = new google.maps.Marker({
+    position: myLatlng,
+    title:"დაკარგვის ადგილი",
+    animation: google.maps.Animation.DROP,
+    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
 });
+
+// To add the marker to the map, call setMap();
+defaultMarker.setMap(map);
+$.get('/api/comments/get/positions/{{ $post->id }}', function(data) {
+    for(i=0; i<data.length; i++) {
+        var latlang = new google.maps.LatLng(data[i].lat,data[i].long);
+var marker = new google.maps.Marker({
+    position: latlang,
+    animation: google.maps.Animation.DROP
+});
+
+// To add the marker to the map, call setMap();
+marker.setMap(map);
+    }
+});
+
+});
+
+
 </script>
 @stop

@@ -19,8 +19,12 @@ Route::post('auth/register','UserController@postRegister');
 Route::get('auth/logout','UserController@logout');
 
 Route::get('post/{id}', 'PostController@detail');
+Route::get('api/comments/get/positions/{post_id}','CommentController@getPositions');
+
 
 Route::group(['middleware' => 'auth'], function () {
         Route::get('/create','PostController@create');
         Route::post('/submit','PostController@submit');
+        Route::get('/comment/add/{post_id}','CommentController@add');
+        Route::post('/comment/submit','CommentController@insert');
 });

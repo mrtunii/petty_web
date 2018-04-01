@@ -153,24 +153,24 @@ jQuery(document).on('ready', function() {
 	/*--------------------------------------
 			Google Map						
 	--------------------------------------*/
-	if(jQuery('#tg-locationmap').length > 0){
-		var _tg_locationmap = jQuery('#tg-locationmap');
-		_tg_locationmap.gmap3({
-			marker: {
-				address: '1600 Elizabeth St, Melbourne, Victoria, Australia',
-				options: {
-					title: 'Robert Frost Elementary School'
-				}
-			},
-			map: {
-				options: {
-					zoom: 16,
-					scrollwheel: false,
-					disableDoubleClickZoom: true,
-				}
-			}
-		});
-	}
+	// if(jQuery('#tg-locationmap').length > 0){
+	// 	var _tg_locationmap = jQuery('#tg-locationmap');
+	// 	_tg_locationmap.gmap3({
+	// 		marker: {
+	// 			address: '1600 Elizabeth St, Melbourne, Victoria, Australia',
+	// 			options: {
+	// 				title: 'Robert Frost Elementary School'
+	// 			}
+	// 		},
+	// 		map: {
+	// 			options: {
+	// 				zoom: 16,
+	// 				scrollwheel: false,
+	// 				disableDoubleClickZoom: true,
+	// 			}
+	// 		}
+	// 	});
+	// }
 	/*--------------------------------------
 			COUNTER							
 	--------------------------------------*/
