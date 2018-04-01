@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/css/jquery-ui.css">
     <link rel="stylesheet" href="/css/scrollbar.css">
     <link rel="stylesheet" href="/css/chartist.css">
-    <link rel="stylesheet" href="/css/main.css?v=2">
+    <link rel="stylesheet" href="/css/main.css?v=3">
     <link rel="stylesheet" href="/css/color.css">
     <link rel="stylesheet" href="/css/responsive.css">
     <script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
