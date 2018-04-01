@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function getPositions($post_id) {
-        $comment = Comment::where('post_id',$post_id)->get();
+        $comment = Comment::where('post_id',$post_id)->orderBy('date_seen','asc')->get();
         return response()->json($comment);
     }
 
@@ -50,5 +50,13 @@ class CommentController extends Controller
         }
         
 
+    }
+
+
+    public function remove($id) {
+        $comment = Comment::findOrFail($id);
+        $post_id = $comment->post_id;
+        $comment->delete();
+        return redirect('/post/'.$post_id);
     }
 }

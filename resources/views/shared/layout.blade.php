@@ -41,13 +41,14 @@
                 Header Start
         *************************************-->
         <header id="tg-header" class="tg-header tg-haslayout">
-            @if(Auth::check())
+            
             <div class="tg-topbar">
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            
                             <div class="dropdown tg-themedropdown tg-userdropdown">
+                                @if(Auth::check())
                                 <a href="javascript:void(0);" id="tg-adminnav" class="tg-btndropdown" data-toggle="dropdown">
                                     <span class="tg-userdp"><img src='http://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?size=34' alt="image description"></span>
                                     <span class="tg-name roboto">{{ Auth::user()->firstname .' '.Auth::user()->lastname }}</span>
@@ -60,12 +61,17 @@
                                         </a>
                                     </li>
                                 </ul>
+                                @else 
+                                <a href="/auth/login" >
+                                    <span class="tg-name roboto">ავტორიზაცია/რეგისტრაცია</span>
+                                </a>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endif
+            
             <div class="tg-navigationarea">
                 <div class="container">
                     <div class="row">

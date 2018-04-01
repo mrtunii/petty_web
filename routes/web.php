@@ -27,4 +27,5 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/submit','PostController@submit');
         Route::get('/comment/add/{post_id}','CommentController@add');
         Route::post('/comment/submit','CommentController@insert');
+        Route::get('comments/remove/{post_id}','CommentController@remove');
 });

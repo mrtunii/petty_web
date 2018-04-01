@@ -172,10 +172,12 @@
         </div>
          <div style="margin-top:50px;" class="text-center">
             <!--/Slider-->
+            @if(Auth::check())
             <a class="tg-btn" href="/comment/add/{{ $post->id }}">
                                 <i class="icon-bookmark"></i>
                                 <span class="roboto">კომენტარის დამატება</span>
                             </a>
+                            @endif
                         </div>
                                     </div>
                                 </div>
@@ -237,7 +239,11 @@
                                   </a>
                               </div>
                               @endif
-                             
+                              
+                              @if( Auth::check() && $post->user_id == Auth::user()->id)
+                             <a class="btn btn-danger btn-circle text-uppercase" href="/comments/remove/{{ $comment->id }}" id="reply"><span class="glyphicon glyphicon-remove"></span> არ არის ჩემი</a>
+                             @endif
+
                           </div>              
                         </div>
                       </li>
