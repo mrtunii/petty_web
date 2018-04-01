@@ -18,7 +18,7 @@ class UserController extends Controller
             'password' => $request->input('password'),
         ];
         if(Auth::attempt($credentials)) {
-            return redirect()->intended('profile');
+            return redirect()->intended('/');
         }
         return back()->withInput()->withErrors(['ელ.ფოსტა ან პაროლი არასწორია']);
     }
