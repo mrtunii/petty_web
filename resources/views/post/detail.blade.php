@@ -48,7 +48,6 @@
                     <div id="tg-twocolumns" class="tg-twocolumns">
                         <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
                             <aside id="tg-sidebar" class="tg-sidebar">
-                               
                                 <div class="tg-sellercontactdetail">
                                     <div class="tg-sellertitle"><h1 class="roboto">პატრონი</h1></div>
                                     <div class="tg-sellercontact">
@@ -56,8 +55,6 @@
                                             <figure><a href="javascript:void(0);"><img src="http://www.gravatar.com/avatar/{{ md5($post->user->email) }}?size=70" alt="image description"></a></figure>
                                             <div class="tg-memberinfo">
                                                 <h3><a href="javascript:void(0);" class="roboto">{{ $post->user->firstname.' '.$post->user->lastname }}</a></h3>
-                                                <span>Member Since Jun 27, 2017</span>
-                                                <a class="tg-btnseeallads" href="javascript:void(0);">See All Ads</a>
                                             </div>
                                         </div>
                                         <a class="tg-btnphone" href="javascript:void(0);">
@@ -299,7 +296,8 @@
         var myLatlng = new google.maps.LatLng({{ $post->lat }},{{ $post->long }});
 var mapOptions = {
   zoom: 12,
-  center: myLatlng
+  center: myLatlng,
+  scrollwheel: false
 }
 var map = new google.maps.Map(document.getElementById("tg-locationmap"), mapOptions);
 var defaultMarker = new google.maps.Marker({
@@ -313,10 +311,12 @@ var defaultMarker = new google.maps.Marker({
 defaultMarker.setMap(map);
 $.get('/api/comments/get/positions/{{ $post->id }}', function(data) {
     for(i=0; i<data.length; i++) {
+        label = (i+1).toString();
         var latlang = new google.maps.LatLng(data[i].lat,data[i].long);
 var marker = new google.maps.Marker({
     position: latlang,
-    animation: google.maps.Animation.DROP
+    animation: google.maps.Animation.DROP,
+    label: label
 });
 
 // To add the marker to the map, call setMap();

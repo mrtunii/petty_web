@@ -43,6 +43,8 @@ class PostController extends Controller
                 ]);
             }
         }
+
+        return redirect('/post/'.$newPost->id);
     }
 
     public function detail($id) {
