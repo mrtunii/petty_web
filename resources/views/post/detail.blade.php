@@ -209,6 +209,7 @@
                                             <li>დაკარგვის თარიღი: <b class="roboto_bold"> {{ Carbon\Carbon::parse($post->lost_date)->toDateString() }}</b> </li>
                                              <li>დაკარგვის ადგილი: <b class="roboto_bold"> {{ $post->lost_address }} </b></li>
                                         </ul>
+                                            <h3 class="roboto">დამატებითი კომენტარი</h3> <br>
                                         {{ $post->description }}
                                         <hr>
                                         <div style="margin-top:30px;">
